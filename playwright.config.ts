@@ -79,10 +79,10 @@ export default defineConfig({
         isMobile: true,
        },
     },
-    // {
-    //   name: 'Mobile Safari on iPhone 15',
-    //   use: { ...devices['iPhone 15'] },
-    // },
+    {
+      name: 'Mobile Safari on iPhone 14 PRO MAX',
+      use: { ...devices['iPhone 14 Pro Max'] },
+    },
 
     /* Test against branded browsers. */
     // {
