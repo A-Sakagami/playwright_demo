@@ -43,7 +43,7 @@ test.describe('IOS エミュレーター接続テスト', async () => {
         await wifiCell.click();
         await client.pause(3000);
         // Wi-Fiメニューが開かれたことを確認
-        const wifiMenu = await client.$("~Wi-Fi");
+        const wifiMenu = await client.$("~情報");
         await expect(await wifiMenu.isDisplayed).toBeTruthy();
 
     });
