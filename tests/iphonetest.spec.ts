@@ -14,10 +14,12 @@ test.beforeAll(async () => {
         capabilities: {
             platformName: "iOS",
             "appium:platformVersion": "16.0", // iOS version
-            "appium:deviceName": "iPhone 14 Pro Max", // crun simctl list devicesでBootedの端末を設定
+            "appium:deviceName": "iPhone 14 Pro Max", // xcrun simctl list devicesでBootedの端末を設定
             "appium:automationName": "XCUITest", // webdriver
-            "appium:bundleId": "com.apple.Preferences", // テスト対象アプリのバンドルIDSs
+            "appium:bundleId": "com.apple.Preferences", // テスト対象アプリのバンドルID
             "appium:noReset": true,
+            "appium:wdaLocalPort": 8100, // localhost
+            "appium:wdaBaseUrl": "http://192.168.10.134" // WebDriverAgentが接続したURL
         }
     };
     client = await remote(options);
@@ -27,7 +29,7 @@ test.beforeAll(async () => {
  * セッションを閉じる
  */
 test.afterAll(async () => {
-    await client.deleteSession();
+    //await client.deleteSession();
 });
 
 test.describe('IOS エミュレーター接続テスト', async () => {
