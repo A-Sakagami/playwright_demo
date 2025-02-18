@@ -11,7 +11,7 @@ let client: Browser; // Appiumクライアント
 async function deleteCache(client: Browser) {
     await client.pressKeyCode(3);
     await client.$("~マナビジョン").touchAction([
-        { action: 'press', element: element },
+        { action: 'press'},
         { action: "wait", ms: 2000 },
         { action: 'release'}
     ]);
@@ -51,9 +51,9 @@ test.beforeAll(async () => {
         capabilities: {
             platformName: 'Android',
             // エミュレーターのシリアル番号
-            //"appium:deviceName": 'emulator-5554', 
+            "appium:deviceName": 'emulator-5554', 
             // 実機のデバイス名
-            "appium:deviceName": process.env._ANDROID,
+            //"appium:deviceName": process.env._ANDROID,
             // 開発しているアプリのパス
             //"appium:app": 'C:\\Users\\GENZ-\\WorkflowToolApp\\flutter_application\\build\\app\\outputs\\flutter-apk\\app-release.apk',
             "appium:automationName": 'UiAutomator2',
@@ -71,11 +71,11 @@ test.afterAll(async () => {
 });
 
 
-test.describe('リグレッションテスト', async() => {
+test.describe.serial('リグレッションテスト', async() => {
     test('チュートリアル', async () => {
         // アプリのストレージを削除する
         // 長タップからアプリ情報を開いて直接ストレージを削除するプロセスならいけるかもしれない
-        deleteCache(client);
+        //deleteCache(client);
 
         // homeをタップ
         await client.pressKeyCode(3);
