@@ -66,8 +66,8 @@ test.beforeAll(async () => {
 
 test.afterAll(async () => {
     // テスト終了時にデバイスを切断する
-    await client.deleteSession();
-    console.log("Appium session ended");
+    //await client.deleteSession();
+    //console.log("Appium session ended");
 });
 
 
@@ -85,7 +85,7 @@ test.describe.serial('リグレッションテスト', async() => {
         // マナビジョン起動
         const appIcon = await client.$("~マナビジョン");
         await appIcon.click();
-        await client.pause(1000);
+        await client.pause(5000);
         await device.screenshot({ path: `screenshots/manavision_${deviceName}.png` });
         await client.pause(1000);
         
@@ -97,6 +97,7 @@ test.describe.serial('リグレッションテスト', async() => {
             await client.pause(1000);
             await client.$("id=jp.co.benesse.manabi:id/text_right").click();
             await device.screenshot({ path: `screenshots/manavision_tutorial2${deviceName}.png` });
+            await client.$("id=com.android.permissioncontroller:id/permission_deny_button").click();
 
             // 最初のお知らせがある場合、閉じる
             const closeIcon = await client.$("id=jp.co.benesse.manabi:id/tv_close");
